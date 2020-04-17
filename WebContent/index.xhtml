@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <!--===============================================================================================-->
+    <title>Form Survei Mahasiswa</title>
+</h:head>
+<h:body>
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <h:form>
+                <span class="contact100-form-title">
+					Form Survei Mahasiswa
+				</span>
+                <div class="wrap-input100">
+                    Nama Depan:
+                    <h:inputText
+                            value="#{survei.namaDepan}"
+                            required="true"
+                            requiredMessage="Input nama depan anda!"
+                            id="namaDepan"
+                            styleClass="input100"/>
+                    <h:message for="namaDepan" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Nama Belakang:
+                    <h:inputText
+                            value="#{survei.namaBelakang}"
+                            required="true"
+                            requiredMessage="Input nama belakang anda!"
+                            id="namaBelakang"
+                            styleClass="input100"/>
+                    <h:message for="namaBelakang" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Alamat:
+                    <h:inputText
+                            value="#{survei.alamat}"
+                            required="true"
+                            requiredMessage="Input alamat anda!"
+                            id="alamat"
+                            styleClass="input100"/>
+                    <h:message for="alamat" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Kota/Kabupaten:
+                    <h:inputText
+                            value="#{survei.kotaKab}"
+                            required="true"
+                            requiredMessage="Input kota/kabupaten anda!"
+                            id="kotaKab"
+                            styleClass="input100"/>
+                    <h:message for="kotaKab" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Provinsi/Negara Bagian:
+                    <h:inputText
+                            value="#{survei.provinsiNeBag}"
+                            required="true"
+                            requiredMessage="Input nama provinsi/negara bagian anda!"
+                            id="provinsiNeBag"
+                            styleClass="input100"/>
+                    <h:message for="provinsiNeBag" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Kode Pos:
+                    <h:inputText
+                            value="#{survei.kodePos}"
+                            required="true"
+                            requiredMessage="Input kode pos anda!"
+                            id="kodePos"
+                            styleClass="input100"/>
+                    <h:message for="kodePos" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Email:
+                    <h:inputText
+                            value="#{survei.email}"
+                            required="true"
+                            requiredMessage="Input email anda!"
+                            id="email"
+                            styleClass="input100">
+                        <mcv:validateEmail/>
+                    </h:inputText>
+                    <h:message for="email" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Nomer Telepon:
+                    <h:inputText
+                            value="#{survei.nomerTelepon}"
+                            required="true"
+                            requiredMessage="Input nomer telepon anda!"
+                            validatorMessage="Invalid phone number. Contoh: +62xxxxxxx"
+                            id="nomerTelepon"
+                            styleClass="input100">
+                        <f:validateRegex pattern="^[+]?[0-9]+$" /> <!--https://stackoverflow.com/questions/16839581/jsf-telephone-numbers-regular-expression-->
+                    </h:inputText>
+                    <h:message for="nomerTelepon" style="color: red"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="wrap-input100">
+                    Tanggal Survei (mm/dd/yyyy):
+                    <h:inputText value="#{survei.tanggalSurvei}"
+                                 id="tanggalSurvei"
+                                 required="true"
+                                 requiredMessage="Tanggal survei diperlukan"
+                                 converterMessage="Illegal date (should be mm/dd/yyyy)">
+                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                    </h:inputText>
+                    <h:message for="tanggalSurvei" style="color: red"/>
+                </div>
+                <div class="wrap-input100">
+                    Aspek yang disenangi dari UNDIP
+                    <h:selectManyCheckbox value = "#{survei.checkBoxInput}" required="true" requiredMessage="Input pilihan anda!" id="checkBoxInput">
+                        <f:selectItem itemValue = "Siswa" itemLabel = "Siswa" class="form-check"/>
+                        <f:selectItem itemValue = "Kampus" itemLabel = "Kampus" class="form-check" />
+                        <f:selectItem itemValue = "Kamar Asrama" itemLabel = "Kamar Asrama" class="form-check" />
+                        <f:selectItem itemValue = "Lokasi" itemLabel = "Lokasi" class="form-check" />
+                        <f:selectItem itemValue = "Suasana" itemLabel = "Suasana" class="form-check" />
+                        <f:selectItem itemValue = "Olahraga" itemLabel = "Olahraga" class="form-check" />
+                    </h:selectManyCheckbox>
+                    <h:message for="checkBoxInput" style="color: red"/>
+                </div>
+                <div class="wrap-input100">
+                    Bagaimana anda mengetahui UNDIP?
+                    <h:selectOneRadio value = "#{survei.radioButtonInput}" required="true" requiredMessage="Input pilihan anda!" id="radioButtonInput">
+                        <f:selectItem itemValue = "Teman" itemLabel = "Teman" />
+                        <f:selectItem itemValue = "Internet" itemLabel = "Internet" />
+                        <f:selectItem itemValue = "Televisi" itemLabel = "Televisi" />
+                        <f:selectItem itemValue = "Lainnya" itemLabel = "Lainnya" />
+                    </h:selectOneRadio>
+                    <h:message for="radioButtonInput" style="color: red"/>
+                </div>
+                <div class="wrap-input100">
+                    Seberapa kemungkinan anda merekomendasikan UNDIP?
+                    <h:selectOneMenu value = "#{survei.dropdownInput}" required="true" requiredMessage="Input pilihan anda!" id="dropdownInput">
+                        <f:selectItem itemValue = "Sangat Mungkin" itemLabel = "Sangat mungkin" />
+                        <f:selectItem itemValue = "Mungkin saja" itemLabel = "Mungkin saja" />
+                        <f:selectItem itemValue = "Tidak Mungkin" itemLabel = "Tidak mungkin" />
+                    </h:selectOneMenu>
+                    <h:message for="dropdownInput" style="color: red"/>
+                </div>
+                <div class="wrap-input100">
+                    Tambahan lainnya:
+                    <h:inputTextarea
+                            styleClass="input100"
+                            value = "#{survei.commentInput}"/>
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <h:commandButton
+                            action="#{survei.submitData}"
+                            value="Submit!"
+                            styleClass="contact100-form-btn">
+                    </h:commandButton>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" id="resetButton">Cancel</button>
+                </div>
+            </h:form>
+        </div>
+    </div>
+    <ui:include src="/WEB-INF/snippets/footer.xhtml"/>
+</h:body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+    document.getElementById("resetButton").addEventListener("click", function(event){
+        event.preventDefault();
+        confirmReset();
+    });
+    function confirmReset() {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#dd3333",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: 'Yes, reset the form!',
+            cancelButtonText: 'No, cancel!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    "Reset!",
+                    "Data has been reset.",
+                    "success"
+                ).then(() => {
+                    //$('input').get(0).nextSibling.remove();
+                    document.getElementById('j_idt6').reset();
+                    //location.reload();
+                });
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    "Cancelled",
+                    "Your data is safe :)",
+                    "error"
+                )
+            }
+        })
+    }
+</script>
+</html>

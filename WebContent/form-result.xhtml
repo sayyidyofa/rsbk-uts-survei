@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css"/>
+    <title>Form Survei Mahasiswa</title>
+</h:head>
+<h:body>
+    <h1 class="ui center aligned header">Hasil Survei</h1>
+    <h3 class="ui center aligned header">Terima kasih telah mengisi survei kami</h3>
+    <h3 class="ui center aligned header">Berikut hasil survei yang telah anda isi</h3>
+    <div class="ui container">
+        <div class="ui segments">
+            <div class="ui segment">
+                Data Diri <br/>
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Input</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nama Depan</td>
+                            <td>#{survei.namaDepan}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama Belakang</td>
+                            <td>#{survei.namaBelakang}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>#{survei.alamat}</td>
+                        </tr>
+                        <tr>
+                            <td>Kota/Kabupaten</td>
+                            <td>#{survei.kotaKab}</td>
+                        </tr>
+                        <tr>
+                            <td>Provinsi/Negara Bagian</td>
+                            <td>#{survei.provinsiNeBag}</td>
+                        </tr>
+                        <tr>
+                            <td>Kode Pos</td>
+                            <td>#{survei.kodePos}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>#{survei.email}</td>
+                        </tr>
+                        <tr>
+                            <td>Nomer Telepon</td>
+                            <td>#{survei.nomerTelepon}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Survei</td>
+                            <td id="tgl">#{survei.tanggalSurvei}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ui segment">
+                Form Opini <br/>
+                <table class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Aspek yang disenangi dari UNDIP</td>
+                        <td id="checkbox-output"><ui:repeat value = "#{survei.checkBoxInput}" var = "s">
+                            #{s},&nbsp;
+                        </ui:repeat></td>
+                    </tr>
+                    <tr>
+                        <td>Bagaimana anda mengetahui UNDIP?</td>
+                        <td>#{survei.radioButtonInput}</td>
+                    </tr>
+                    <tr>
+                        <td>Seberapa kemungkinan anda merekomendasikan UNDIP?</td>
+                        <td>#{survei.dropdownInput}</td>
+                    </tr>
+                    <tr>
+                        <td>Tambahan lainnya</td>
+                        <td>#{survei.commentInput}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p id="status" style="visibility: hidden">#{survei.isFormFilled}</p>
+        <p id="rootpath" style="visibility: hidden">#{request.contextPath}/</p>
+        <a href="#{request.contextPath}/" class="ui primary button">Isi Form Lagi</a>
+        <a href="#{request.contextPath}/about.jsf" class="ui secondary button">Tentang Kami</a>
+    </div>
+</h:body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript">
+    $(()=>{
+        if (document.getElementById('status').textContent === 'false') {
+            Swal.fire(
+                "No!",
+                "Isi formnya dulu!.",
+                "error"
+            ).then(() => {
+                window.location.href = document.getElementById('rootpath').textContent;
+            });
+        }
+        console.log(document.getElementById('tgl').innerText);
+        console.log(moment.utc(document.getElementById('tgl').innerText).format('LL'));
+        document.getElementById('tgl').innerText = document.getElementById('tgl').innerText.slice(0, -18); //moment().format(document.getElementById('tgl').innerText);
+        document.getElementById('checkbox-output').innerText = document.getElementById('checkbox-output').innerText.slice(0, -2);
+    });
+</script>
+</html>
