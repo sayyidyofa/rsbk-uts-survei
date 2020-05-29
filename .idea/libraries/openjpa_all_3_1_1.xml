@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="openjpa-all-3.1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/openjpa-all-3.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

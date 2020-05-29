@@ -28,39 +28,39 @@
                     <tbody>
                         <tr>
                             <td>Nama Depan</td>
-                            <td>#{survei.namaDepan}</td>
+                            <td>#{survei.surveiData.namaDepan}</td>
                         </tr>
                         <tr>
                             <td>Nama Belakang</td>
-                            <td>#{survei.namaBelakang}</td>
+                            <td>#{survei.surveiData.namaBelakang}</td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
-                            <td>#{survei.alamat}</td>
+                            <td>#{survei.surveiData.alamat}</td>
                         </tr>
                         <tr>
                             <td>Kota/Kabupaten</td>
-                            <td>#{survei.kotaKab}</td>
+                            <td>#{survei.surveiData.kotaKab}</td>
                         </tr>
                         <tr>
                             <td>Provinsi/Negara Bagian</td>
-                            <td>#{survei.provinsiNeBag}</td>
+                            <td>#{survei.surveiData.negaraBagian}</td>
                         </tr>
                         <tr>
                             <td>Kode Pos</td>
-                            <td>#{survei.kodePos}</td>
+                            <td>#{survei.surveiData.kodePos}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td>#{survei.email}</td>
+                            <td>#{survei.surveiData.email}</td>
                         </tr>
                         <tr>
                             <td>Nomer Telepon</td>
-                            <td>#{survei.nomerTelepon}</td>
+                            <td>#{survei.surveiData.nomerTelepon}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Survei</td>
-                            <td id="tgl">#{survei.tanggalSurvei}</td>
+                            <td id="tgl">#{survei.surveiData.tanggalSurvei}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,21 +77,22 @@
                     <tbody>
                     <tr>
                         <td>Aspek yang disenangi dari UNDIP</td>
-                        <td id="checkbox-output"><ui:repeat value = "#{survei.checkBoxInput}" var = "s">
+                        <td id="checkbox-output">#{survei.surveiData.checkboxInput}</td>
+                        <!--<td id="checkbox-output"><ui:repeat value = "#{survei.checkBoxInput}" var = "s">
                             #{s},&nbsp;
-                        </ui:repeat></td>
+                        </ui:repeat></td>-->
                     </tr>
                     <tr>
                         <td>Bagaimana anda mengetahui UNDIP?</td>
-                        <td>#{survei.radioButtonInput}</td>
+                        <td>#{survei.surveiData.radioInput}</td>
                     </tr>
                     <tr>
                         <td>Seberapa kemungkinan anda merekomendasikan UNDIP?</td>
-                        <td>#{survei.dropdownInput}</td>
+                        <td>#{survei.surveiData.dropdownInput}</td>
                     </tr>
                     <tr>
                         <td>Tambahan lainnya</td>
-                        <td>#{survei.commentInput}</td>
+                        <td>#{survei.surveiData.commentInput}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -100,13 +101,13 @@
         <p id="status" style="visibility: hidden">#{survei.isFormFilled}</p>
         <p id="rootpath" style="visibility: hidden">#{request.contextPath}/</p>
         <a href="#{request.contextPath}/" class="ui primary button">Isi Form Lagi</a>
+        <a href="#{request.contextPath}/form-result-list.jsf" class="ui positive button">Lihat Hasil Form Lainnya</a>
         <a href="#{request.contextPath}/about.jsf" class="ui secondary button">Tentang Kami</a>
     </div>
 </h:body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
-<script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript">
     $(()=>{
         if (document.getElementById('status').textContent === 'false') {
@@ -118,10 +119,11 @@
                 window.location.href = document.getElementById('rootpath').textContent;
             });
         }
-        console.log(document.getElementById('tgl').innerText);
-        console.log(moment.utc(document.getElementById('tgl').innerText).format('LL'));
-        document.getElementById('tgl').innerText = document.getElementById('tgl').innerText.slice(0, -18); //moment().format(document.getElementById('tgl').innerText);
-        document.getElementById('checkbox-output').innerText = document.getElementById('checkbox-output').innerText.slice(0, -2);
+        //console.log(document.getElementById('tgl').innerText);
+        //console.log(moment.utc(document.getElementById('tgl').innerText).format('LL'));
+        //document.getElementById('tgl').innerText = document.getElementById('tgl').innerText.slice(0, -18); //moment().format(document.getElementById('tgl').innerText);
+        //JSON.parse(document.getElementById('checkbox-output').textContent).join(", ")
+        document.getElementById('checkbox-output').innerText = JSON.parse(document.getElementById('checkbox-output').textContent).join(", ");
     });
 </script>
 </html>

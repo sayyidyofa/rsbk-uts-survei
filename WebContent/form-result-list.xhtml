@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<f:metadata>
+    <f:viewAction action="#{survei.listener}" />
+</f:metadata>
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css"/>
+    <title>Form Survei Mahasiswa</title>
+</h:head>
+<h:body>
+    <h1 class="ui center aligned header">List Hasil Survei</h1>
+    <div class="ui container">
+        <table class="ui celled structured table">
+            <thead>
+                <tr>
+                    <th colspan="9">Data Diri</th>
+                    <th colspan="4">Form Opini</th>
+                </tr>
+                <tr>
+                    <th>Nama Depan</th>
+                    <th>Nama Belakang</th>
+                    <th>Alamat</th>
+                    <th>Kota / Kabupaten</th>
+                    <th>Negara Bagian / Provinsi</th>
+                    <th>Kode Pos</th>
+                    <th>Email</th>
+                    <th>Nomer Telepon</th>
+                    <th>Tanggal Survei</th>
+                    <th>Aspek yang disenangi dari UNDIP</th>
+                    <th>Bagaimana anda mengetahui UNDIP?</th>
+                    <th>Seberapa kemungkinan anda merekomendasikan UNDIP?</th>
+                    <th>Tambahan lainnya</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!--<td id="checkbox-output"><ui:repeat value = "#{survei.checkBoxInput}" var = "s">
+                        #{s},&nbsp;
+                    </ui:repeat></td>-->
+            <ui:repeat value="#{survei.surveiDataEntities}" var="surveiData">
+                <tr>
+                    <td>#{surveiData.namaDepan}</td>
+                    <td>#{surveiData.namaBelakang}</td>
+                    <td>#{surveiData.alamat}</td>
+                    <td>#{surveiData.kotaKab}</td>
+                    <td>#{surveiData.negaraBagian}</td>
+                    <td>#{surveiData.kodePos}</td>
+                    <td>#{surveiData.email}</td>
+                    <td>#{surveiData.nomerTelepon}</td>
+                    <td>#{surveiData.tanggalSurvei}</td>
+
+                    <td class="checkbox-output">#{surveiData.checkboxInput}</td>
+                    <td>#{surveiData.radioInput}</td>
+                    <td>#{surveiData.dropdownInput}</td>
+                    <td>#{surveiData.commentInput}</td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+        </table>
+        <a href="#{request.contextPath}/" class="ui primary button">Isi Form Lagi</a>
+        <a href="#{request.contextPath}/about.jsf" class="ui secondary button">Tentang Kami</a>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.10/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
+    <script type="text/javascript">
+        $(()=>{
+            let $array = $('.checkbox-output');
+            $array.each(function () {
+                $(this).text(JSON.parse($(this).text()).join(", "))
+            });
+            //$array.text(JSON.parse($array.text()).join(", "));
+        });
+    </script>
+</h:body>
+</html>

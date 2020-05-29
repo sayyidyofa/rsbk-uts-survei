@@ -145,8 +145,9 @@
                                  id="tanggalSurvei"
                                  required="true"
                                  requiredMessage="Tanggal survei diperlukan"
-                                 converterMessage="Illegal date (should be mm/dd/yyyy)">
-                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                 converterMessage="Illegal date (should be dd/mm/yyyy)"
+                                 validator="#{survei.validateDate}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                     </h:inputText>
                     <h:message for="tanggalSurvei" style="color: red"/>
                 </div>
